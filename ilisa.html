@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trung Tâm Anh Ngữ ILISA - Nâng Cao Tiếng Anh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary: #0056b3;
+            --secondary: #f8f9fa;
+            --accent: #ffc107;
+            --dark: #343a40;
+            --light: #ffffff;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            height: 32px;
+            margin-right: 8px;
+        }
+
+        .logo h1 {
+            color: #1e3a8a;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border-radius: 20px;
+            margin: 0 3px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #1e3a8a !important;
+            padding: 10px 20px !important;
+            border-radius: 20px !important;
+            font-weight: bold !important;
+            box-shadow: 0 3px 10px rgba(251, 191, 36, 0.3);
+            transition: all 0.3s ease;
+            margin-left: 10px;
+            font-size: 13px !important;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
+        }
+
+        .contact-info {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding-top: 70px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e0a800;
+            transform: translateY(-3px);
+        }
+
+        /* Features */
+        .features {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* Courses */
+        .courses {
+            padding: 100px 0;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-image {
+            height: 200px;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1523580494863-2dd476c0a6ff?ixlib=rb-4.0.3') no-repeat center center/cover;
+        }
+
+        .course-content {
+            padding: 25px;
+        }
+
+        .course-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .course-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ddd;
+            margin-right: 15px;
+        }
+
+        .testimonial-author h4 {
+            color: var(--dark);
+        }
+
+        .testimonial-author p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-content {
+            color: #555;
+            font-style: italic;
+        }
+
+        /* CTA */
+        .cta {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1519494026892-80bbd07d3eaa?ixlib=rb-4.0.3') no-repeat center center/cover;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #004494;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav-menu a {
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+            
+            .cta-button {
+                padding: 8px 15px !important;
+                font-size: 12px !important;
+                margin-left: 5px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 0;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                width: 100%;
+                gap: 5px;
+            }
+
+            .nav-menu a {
+                text-align: center;
+                margin: 2px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .cta-button {
+                margin-left: 0 !important;
+                margin: 2px;
+                padding: 8px 15px !important;
+            }
+
+            .logo {
+                padding: 5px 12px;
+            }
+
+            .logo img {
+                height: 28px;
+            }
+
+            .logo h1 {
+                font-size: 18px;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-menu a {
+                width: 90%;
+                text-align: center;
+                margin: 1px 0;
+            }
+
+            .cta-button {
+                width: 90%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <img src="/logo/z6786694010551_803de0912934c79f0887bce437306be3.jpg" alt="ILISA Logo">
+                    <h1>ILISA</h1>
+                </div>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#hero">Giới Thiệu</a></li>
+                        <li><a href="#features">Các Khóa Học</a></li>
+                        <li><a href="#courses">Tại Sao Nên Chọn ILISA</a></li>
+                        <li><a href="#testimonials">Chia Sẻ Từ Thực Tế</a></li>
+                        <li><a href="#contact">Câu Hỏi Thường Gặp</a></li>
+                        <li><a href="#contact" class="cta-button">TƯ VẤN MIỄN PHÍ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Nâng Cao Tiếng Anh Cùng ILISA</h2>
+                <p>Kinh nghiệm 15+ năm - Hơn 500,000 học viên thành công</p>
+                <a href="#" class="btn">Đăng ký học thử miễn phí</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tại Sao Chọn ILISA?</h2>
+                <p>Hơn 15 năm kinh nghiệm trong lĩnh vực giáo dục, chúng tôi cam kết mang đến chất lượng đào tạo tốt
+                    nhất</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Giảng Viên Chất Lượng</h3>
+                    <p>Đội ngũ giáo viên bản ngữ và Việt Nam giàu kinh nghiệm, nhiệt tình</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Chương Trình Quốc Tế</h3>
+                    <p>Chương trình học được công nhận toàn cầu, phù hợp với mọi lứa tuổi</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Bằng Cấp Uy Tín</h3>
+                    <p>Cấp chứng chỉ Cambridge, TOEIC, IELTS sau khi hoàn thành khóa học</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="section-title">
+                <h2>Khóa Học Nổi Bật</h2>
+                <p>Chúng tôi cung cấp đa dạng các khóa học tiếng Anh cho mọi lứa tuổi và trình độ</p>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-content">
+                        <h3>Khóa Học Thiếu Nhi</h3>
+                        <p>Chương trình học vui nhộn, giúp trẻ phát triển toàn diện 4 kỹ năng</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 12 tuần</span>
+                            <span><i class="fas fa-users"></i> 15 học viên/lớp</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-content">
+                        <h3>Khóa Học Người Lớn</h3>
+                        <p>Cải thiện giao tiếp, luyện thi TOEIC, IELTS với giáo viên bản ngữ</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 16 tuần</span>
+                            <span><i class="fas fa-users"></i> 12 học viên/lớp</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <div class="course-image"></div>
+                    <div class="course-content">
+                        <h3>Luyện Thi IELTS</h3>
+                        <p>Cam kết đầu ra 6.5+ với lộ trình học tập cá nhân hóa</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-clock"></i> 8 tuần</span>
+                            <span><i class="fas fa-users"></i> 10 học viên/lớp</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Học Viên Nói Gì?</h2>
+                <p>Xem những phản hồi từ học viên đã thành công cùng ILISA</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-author">
+                            <h4>Nguyễn Thị Mai</h4>
+                            <p>Học viên khóa IELTS</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"Sau 3 tháng học tại ILISA, em đã đạt được 7.5 IELTS. Giáo viên rất nhiệt tình và phương
+                            pháp học hiệu quả."</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-author">
+                            <h4>Trần Văn Hùng</h4>
+                            <p>Phụ huynh học viên</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"Con tôi đã tiến bộ rất nhiều sau khi học tại ILISA. Chương trình học rất phù hợp với lứa
+                            tuổi."</p>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-author">
+                            <h4>Lê Quỳnh Anh</h4>
+                            <p>Học viên khóa giao tiếp</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        <p>"Môi trường học tập thân thiện, giáo viên bản ngữ rất dễ gần. Em đã tự tin giao tiếp sau khóa
+                            học này."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Liên Hệ Với Chúng Tôi</h2>
+                <p>Nếu bạn có bất kỳ câu hỏi nào, đừng ngần ngại liên hệ với chúng tôi</p>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Họ và Tên</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Số Điện Thoại</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course">Khóa học quan tâm</label>
+                        <select id="course" name="course">
+                            <option value="">-- Chọn khóa học --</option>
+                            <option value="kids">Khóa học thiếu nhi</option>
+                            <option value="adults">Khóa học người lớn</option>
+                            <option value="ielts">Luyện thi IELTS</option>
+                            <option value="toeic">Luyện thi TOEIC</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Lời nhắn</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Gửi Thông Tin</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Giới Thiệu</h3>
+                    <ul>
+                        <li><a href="#">Về ILISA</a></li>
+                        <li><a href="#">Tầm nhìn & Sứ mệnh</a></li>
+                        <li><a href="#">Đội ngũ giảng viên</a></li>
+                        <li><a href="#">Cơ sở vật chất</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Khóa Học</h3>
+                    <ul>
+                        <li><a href="#">Tiếng Anh Thiếu Nhi</a></li>
+                        <li><a href="#">Tiếng Anh Người Lớn</a></li>
+                        <li><a href="#">Luyện Thi IELTS</a></li>
+                        <li><a href="#">Luyện Thi TOEIC</a></li>
+                        <li><a href="#">Tiếng Anh Doanh Nghiệp</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Thông Tin</h3>
+                    <ul>
+                        <li><a href="#">Tin tức & Sự kiện</a></li>
+                        <li><a href="#">Lịch khai giảng</a></li>
+                        <li><a href="#">Chương trình ưu đãi</a></li>
+                        <li><a href="#">Học bổng</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Liên Hệ</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 ABC, Hà Nội</li>
+                        <li><i class="fas fa-phone"></i> 1900 1234</li>
+                        <li><i class="fas fa-envelope"></i> info@ILISA.edu.vn</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 ILISA English Vietnam. All Rights Reserved.</p>
+                <p>Giấy phép hoạt động: Số 123/GCN-ĐKGD</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form validation
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+
+            if (name && email && phone) {
+                // In a real website, you would send this data to a server
+                alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ sớm phản hồi.');
+                this.reset();
+            } else {
+                alert('Vui lòng điền đầy đủ thông tin bắt buộc.');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+
+</html>
