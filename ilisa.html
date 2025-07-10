@@ -36,51 +36,96 @@
 
         /* Header */
         header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #3b82f6 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 6s ease infinite;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .header-top {
             display: flex;
-            justify-content: space-between;
+            flex-direction: row;
             align-items: center;
-            padding: 12px 0;
-            flex-wrap: wrap;
-            gap: 15px;
+            justify-content: space-between;
+            padding: 15px 0;
+            flex-wrap: nowrap;
+            gap: 0;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative; /* Ensure proper positioning */
+        }
+
+        .header-top::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
         }
 
         .logo {
             display: flex;
             align-items: center;
-            background: white;
-            padding: 6px 15px;
-            border-radius: 20px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            flex-shrink: 0;
+            margin-right: auto;
+            flex-shrink: 0; /* Prevent shrinking */
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.9) 100%);
+            padding: 8px 18px;
+            border-radius: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
         }
 
         .logo img {
-            height: 32px;
-            margin-right: 8px;
+            height: 36px;
+            margin-right: 10px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: rotate(5deg) scale(1.05);
         }
 
         .logo h1 {
             color: #1e3a8a;
-            font-size: 22px;
-            font-weight: bold;
+            font-size: 24px;
+            font-weight: 700;
             margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav-menu {
             display: flex;
-            list-style: none;
             align-items: center;
-            gap: 0;
-            flex-wrap: wrap;
+            justify-content: flex-end;
+            list-style: none;
+            gap: 15px;
+            flex-wrap: nowrap;
         }
 
         .nav-menu li {
@@ -90,37 +135,94 @@
         .nav-menu a {
             color: white;
             text-decoration: none;
-            padding: 8px 15px;
+            padding: 10px 18px;
             display: block;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            border-radius: 20px;
-            margin: 0 3px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            border-radius: 25px;
+            margin: 0 2px;
             font-size: 14px;
             white-space: nowrap;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-menu a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .nav-menu a:hover::before {
+            left: 100%;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
 
         .nav-menu a:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            transform: translateY(-3px);
+            color: #fbbf24;
+            text-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+        }
+
+        .nav-menu a:hover::after {
+            width: 80%;
         }
 
         .cta-button {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-            color: #1e3a8a !important;
-            padding: 10px 20px !important;
-            border-radius: 20px !important;
-            font-weight: bold !important;
-            box-shadow: 0 3px 10px rgba(251, 191, 36, 0.3);
-            transition: all 0.3s ease;
-            margin-left: 10px;
-            font-size: 13px !important;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%, #d97706 200%);
+            background-size: 200% 200%;
+            color: #0f172a !important;
+            padding: 12px 24px !important;
+            border-radius: 25px !important;
+            font-weight: 700 !important;
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-left: 15px;
+            font-size: 14px !important;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
         }
 
         .cta-button:hover {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.4);
+            background-position: 100% 50%;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 35px rgba(251, 191, 36, 0.6);
+            color: #0f172a !important;
         }
 
         .contact-info {
@@ -414,99 +516,473 @@
             font-size: 0.9rem;
         }
 
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .contact .container {
+            position: relative;
+            z-index: 2;
+        }
+
         /* Contact Form */
         .contact-form {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin-top: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            margin-top: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3b82f6, #1e40af, #7c3aed, #ec4899, #f59e0b);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 25px;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            position: relative;
+            margin-bottom: 25px;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: var(--dark);
+            margin-bottom: 8px;
+            font-weight: 700;
+            color: #1e40af;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
         }
 
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            font-family: inherit;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .form-group input:focus + label,
+        .form-group textarea:focus + label,
+        .form-group select:focus + label {
+            color: #3b82f6;
+            transform: translateY(-2px);
         }
 
         .form-group textarea {
-            height: 100px;
+            height: 120px;
             resize: vertical;
+            font-family: inherit;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 20px;
+            padding-right: 45px;
         }
 
         .btn-submit {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 50%, #7c3aed 100%);
+            background-size: 200% 200%;
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 5px;
+            padding: 18px 40px;
+            border-radius: 25px;
             cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-submit:hover::before {
+            left: 100%;
         }
 
         .btn-submit:hover {
-            background-color: #004494;
+            background-position: 100% 50%;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(-1px);
+        }
+
+        /* Form Icons */
+        .form-group.with-icon {
+            position: relative;
+        }
+
+        .form-group.with-icon i {
+            position: absolute;
+            left: 15px;
+            top: calc(100% - 27px);
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .form-group.with-icon input,
+        .form-group.with-icon select {
+            padding-left: 50px;
+        }
+
+        .form-group.with-icon input:focus ~ i,
+        .form-group.with-icon select:focus ~ i {
+            color: #3b82f6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-form {
+                padding: 30px 20px;
+                margin-top: 30px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+
+            .btn-submit {
+                padding: 15px 30px;
+                font-size: 14px;
+            }
+        }
+
+        /* Floating Contact Widget */
+        .floating-contact {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes slideInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            }
+            100% {
+                box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            }
+        }
+
+        @keyframes pulsePhone {
+            0% {
+                box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            }
+            50% {
+                box-shadow: 0 4px 20px rgba(30, 58, 138, 0.5);
+            }
+            100% {
+                box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            }
+        }
+
+        .contact-item {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: bold;
+            font-size: 14px;
+            min-width: 120px;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        .contact-item.phone {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+            animation: pulsePhone 3s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+            animation-play-state: paused;
+        }
+
+        .contact-item.phone:hover {
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.5);
+            animation-play-state: paused;
+        }
+
+        .contact-item i {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover i {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .contact-item.phone:hover i {
+            transform: rotate(-15deg) scale(1.1);
+        }
+
+        /* Responsive for floating contact */
+        @media (max-width: 768px) {
+            .floating-contact {
+                bottom: 20px;
+                right: 10px;
+                gap: 10px;
+                animation-duration: 0.6s;
+            }
+
+            .contact-item {
+                padding: 10px 12px;
+                font-size: 12px;
+                min-width: 100px;
+                transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+
+            .contact-item i {
+                font-size: 14px;
+            }
+
+            .contact-item:hover {
+                transform: translateY(-2px) scale(1.03);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .floating-contact {
+                bottom: 15px;
+                right: 5px;
+                gap: 8px;
+                animation-duration: 0.5s;
+            }
+
+            .contact-item {
+                padding: 8px 10px;
+                font-size: 11px;
+                min-width: 80px;
+                transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+
+            .contact-item:hover {
+                transform: translateY(-1px) scale(1.02);
+            }
+
+            .contact-item:hover i {
+                transform: rotate(10deg) scale(1.05);
+            }
+
+            .contact-item.phone:hover i {
+                transform: rotate(-10deg) scale(1.05);
+            }
         }
 
         /* Responsive */
         @media (max-width: 1024px) {
+            .nav-menu {
+                padding: 6px;
+                gap: 3px;
+            }
+            
             .nav-menu a {
-                padding: 8px 12px;
+                padding: 8px 14px;
                 font-size: 13px;
             }
             
             .cta-button {
-                padding: 8px 15px !important;
+                padding: 10px 18px !important;
                 font-size: 12px !important;
-                margin-left: 5px;
+                margin-left: 10px;
+            }
+
+            .logo h1 {
+                font-size: 20px;
             }
         }
 
         @media (max-width: 768px) {
             .header-top {
                 flex-direction: column;
+                align-items: stretch;
                 gap: 10px;
-                padding: 10px 0;
-            }
-
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-                width: 100%;
-                gap: 5px;
-            }
-
-            .nav-menu a {
-                text-align: center;
-                margin: 2px;
-                padding: 8px 12px;
-                font-size: 12px;
-            }
-
-            .cta-button {
-                margin-left: 0 !important;
-                margin: 2px;
-                padding: 8px 15px !important;
             }
 
             .logo {
-                padding: 5px 12px;
+                margin-right: 0;
+                margin-bottom: 8px;
+            }
+
+            .nav-menu {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-top {
+                padding: 10px 0;
+                gap: 12px;
+            }
+
+            .nav-menu {
+                flex-direction: column;
+                width: 100%;
+                gap: 5px;
+                padding: 12px 8px;
+                border-radius: 20px;
+            }
+
+            .nav-menu a {
+                width: 95%;
+                text-align: center;
+                margin: 2px 0;
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+
+            .cta-button {
+                width: 95%;
+                text-align: center;
+                margin: 2px 0;
+                padding: 12px 20px !important;
+                font-size: 14px !important;
+            }
+
+            .logo {
+                padding: 6px 14px;
             }
 
             .logo img {
@@ -518,43 +994,427 @@
             }
 
             .hero {
-                padding-top: 120px;
+                padding-top: 160px;
+            }
+        }
+
+        /* Accordion Courses Section */
+        .accordion-courses {
+            margin-top: 40px;
+        }
+        .accordion-item {
+            border-radius: 20px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .accordion-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            padding: 18px 32px;
+            cursor: pointer;
+            transition: background 0.3s;
+            user-select: none;
+        }
+        .accordion-title.starter { background: #e9a6c7; }
+        .accordion-title.kids { background: #2877be; }
+        .accordion-title.teen { background: #ea4957; }
+        .accordion-title.ielts { background: #fcdc68; color: #fff; }
+        .accordion-title .icon {
+            font-size: 2rem;
+            transition: transform 0.3s;
+        }
+        .accordion-title.active .icon {
+            transform: rotate(180deg);
+        }
+        .accordion-content {
+            background: #fff;
+            color: #333;
+            padding: 0 32px 24px 32px;
+            display: none;
+            font-size: 1.1rem;
+        }
+        .accordion-content.active {
+            display: block;
+            animation: fadeIn 0.4s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Board Members Section */
+        .board-members {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .board-members::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .board-members .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .members-carousel {
+            position: relative;
+            margin-top: 60px;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .member-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899, #f59e0b);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .member-card:hover::before {
+            opacity: 1;
+        }
+
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            overflow: hidden;
+            position: relative;
+            border: 5px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .member-card:hover .member-avatar {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .member-card:hover .member-avatar img {
+            transform: scale(1.1);
+        }
+
+        .member-info h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .member-info p {
+            color: #64748b;
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .member-social a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .member-social a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* .member-social a.linkedin {
+            background: linear-gradient(135deg, #0077b5, #0099cc);
+        } */
+
+        /* .member-social a.email {
+            background: linear-gradient(135deg, #ea4335, #ff5722);
+        }
+
+        .member-social a.phone {
+            background: linear-gradient(135deg, #34a853, #4caf50);
+        } */
+
+        /* Teachers Section */
+        .teachers {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .teachers::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .teachers .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+
+        .teacher-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .teacher-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .teacher-card:hover::before {
+            opacity: 1;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+        }
+
+        .teacher-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+            margin: 0 auto 25px;
+            overflow: hidden;
+            position: relative;
+            border: 4px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .teacher-card:hover .teacher-avatar {
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .teacher-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .teacher-card:hover .teacher-avatar img {
+            transform: scale(1.1);
+        }
+
+        .teacher-info h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .teacher-info p {
+            color: #64748b;
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .teacher-specialties {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .specialty-tag {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* Grid layout for 6 teachers */
+        @media (min-width: 1024px) {
+            .teachers-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .teachers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .teachers {
+                padding: 60px 0;
             }
 
-            .hero h2 {
-                font-size: 2rem;
+            .teachers-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
             }
 
-            .section-title h2 {
-                font-size: 2rem;
+            .teacher-card {
+                padding: 25px 20px;
             }
 
-            .cta h2 {
-                font-size: 2rem;
+            .teacher-avatar {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 20px;
+            }
+
+            .teacher-info h3 {
+                font-size: 1.2rem;
+            }
+
+            .teacher-info p {
+                font-size: 0.9rem;
+            }
+
+            .specialty-tag {
+                font-size: 0.75rem;
+                padding: 3px 10px;
             }
         }
 
         @media (max-width: 480px) {
-            .nav-menu {
-                flex-direction: column;
-                width: 100%;
+            .teacher-card {
+                padding: 20px 15px;
             }
 
-            .nav-menu a {
-                width: 90%;
-                text-align: center;
-                margin: 1px 0;
+            .teacher-avatar {
+                width: 100px;
+                height: 100px;
             }
 
-            .cta-button {
-                width: 90%;
-                text-align: center;
+            .teacher-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .teacher-specialties {
+                gap: 6px;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Floating Contact Widget -->
+    <div class="floating-contact">
+        <a href="tel:+84901234567" class="contact-item phone">
+            <i class="fas fa-phone-alt"></i>
+            <span>0901 234 567</span>
+        </a>
+        <a href="https://zalo.me/0835095956" target="_blank" class="contact-item zalo">
+            <i class="fas fa-comments"></i>
+            <span>Chat Zalo</span>
+        </a>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -566,11 +1426,12 @@
                 <nav>
                     <ul class="nav-menu">
                         <li><a href="#hero">Giới Thiệu</a></li>
-                        <li><a href="#features">Các Khóa Học</a></li>
-                        <li><a href="#courses">Tại Sao Nên Chọn ILISA</a></li>
-                        <li><a href="#testimonials">Chia Sẻ Từ Thực Tế</a></li>
-                        <li><a href="#contact">Câu Hỏi Thường Gặp</a></li>
-                        <li><a href="#contact" class="cta-button">TƯ VẤN MIỄN PHÍ</a></li>
+                        <li><a href="#features">Tại Sao Chọn ILISA</a></li>
+                        <li><a href="#courses">Khóa Học</a></li>
+                        <li><a href="#teachers">Giáo Viên</a></li>
+                        <li><a href="#board-members">Ban Quản Trị</a></li>
+                        <li><a href="#contact">Liên Hệ</a></li>
+                        <li><a href="#contact" class="cta-button">Tư vấn miễn phí</a></li>
                     </ul>
                 </nav>
             </div>
@@ -664,6 +1525,204 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Accordion for Courses -->
+            <div class="accordion-courses">
+                <div class="accordion-item">
+                    <div class="accordion-title starter" onclick="toggleAccordion(this)">
+                        TIẾNG ANH STARTER & MẪU GIÁO
+                        <span class="icon">&#x25BC;</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Chương trình dành cho trẻ nhỏ, giúp làm quen với tiếng Anh qua trò chơi, bài hát, hoạt động sáng tạo.</li>
+                            <li>Phát triển kỹ năng nghe, nói, nhận biết từ vựng cơ bản.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title kids" onclick="toggleAccordion(this)">
+                        TIẾNG ANH THIẾU NHI
+                        <span class="icon">&#x25BC;</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Chương trình cho học sinh tiểu học, tập trung phát triển toàn diện 4 kỹ năng.</li>
+                            <li>Học qua dự án, hoạt động nhóm, tăng sự tự tin giao tiếp.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title teen" onclick="toggleAccordion(this)">
+                        TIẾNG ANH THIẾU NIÊN
+                        <span class="icon">&#x25BC;</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Chương trình cho học sinh THCS, luyện thi Cambridge, phát triển tư duy phản biện.</li>
+                            <li>Chuẩn bị nền tảng vững chắc cho các kỳ thi quốc tế.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-title ielts" onclick="toggleAccordion(this)">
+                        IELTS
+                        <span class="icon">&#x25BC;</span>
+                    </div>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Lộ trình luyện thi IELTS cá nhân hóa, cam kết đầu ra 6.5+.</li>
+                            <li>Giáo viên giàu kinh nghiệm, tài liệu cập nhật mới nhất.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section class="teachers" id="teachers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Đội Ngũ Giáo Viên Giàu Kinh Nghiệm</h2>
+                <p>Những giáo viên tận tâm, chuyên nghiệp với nhiều năm kinh nghiệm trong việc giảng dạy tiếng Anh</p>
+            </div>
+            <div class="teachers-grid">
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Pavel Kukikov">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Pavel Kukikov</h3>
+                        <p>Giáo viên (Apollo Bậu Cát)</p>
+                        <div class="teacher-specialties">
+                            <span class="specialty-tag">IELTS</span>
+                            <span class="specialty-tag">Grammar</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Jonathan Bourdon">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Jonathan Bourdon</h3>
+                        <p>Giáo viên (Apollo Phạm Ngọc Thạch)</p>
+                        <div class="teacher-specialties">
+                            <span class="specialty-tag">Speaking</span>
+                            <span class="specialty-tag">TOEIC</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616c5e03129?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Linzi Mary Dickson">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Linzi Mary Dickson</h3>
+                        <p>Giáo viên (Apollo Tân Kỳ Tân Quý)</p>
+                        <div class="teacher-specialties">
+                            <span class="specialty-tag">Kids</span>
+                            <span class="specialty-tag">Phonics</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1288&q=80" alt="Teacher 4">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Sarah Johnson</h3>
+                        <p>Giáo viên (Apollo Quận 1)</p>
+                        <div class="teacher-specialties">
+                            <span class="specialty-tag">Writing</span>
+                            <span class="specialty-tag">Business</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Teacher 5">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Michael Brown</h3>
+                        <p>Giáo viên (Apollo Quận 7)</p>
+                        <div class="teacher-specialties">
+                            <span class="specialty-tag">Listening</span>
+                            <span class="specialty-tag">Pronunciation</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-avatar">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Teacher 6">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Emma Wilson</h3>
+                        <p>Giáo viên (Apollo Thủ Đức)</p>
+                        <div class="teacher-specialties">
+                            <span class="specialty-tag">Reading</span>
+                            <span class="specialty-tag">Academic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Board Members Section -->
+    <section class="board-members" id="board-members">
+        <div class="container">
+            <div class="section-title">
+                <h2>Thành Viên Ban Quản Trị</h2>
+                <p>Đội ngũ lãnh đạo giàu kinh nghiệm, tận tâm vì sự phát triển của học viên</p>
+            </div>
+            <div class="members-carousel">
+                <div class="members-grid">
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616c5e03129?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Arabella Peters">
+                        </div>
+                        <div class="member-info">
+                            <h3>Arabella Peters</h3>
+                            <p>Nhà đầu tư giáo dục kiêm đồng sáng lập</p>
+                            <div class="member-social">
+                                <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="email"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="phone"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dugie Cameron">
+                        </div>
+                        <div class="member-info">
+                            <h3>Dugie Cameron</h3>
+                            <p>Cố vấn Ban Quản trị</p>
+                            <div class="member-social">
+                                <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="email"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="phone"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-card">
+                        <div class="member-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Richard Eu">
+                        </div>
+                        <div class="member-info">
+                            <h3>Richard Eu</h3>
+                            <p>Thành viên Hội đồng Quản trị</p>
+                            <div class="member-social">
+                                <a href="#" class="linkedin"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="email"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="phone"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -723,37 +1782,50 @@
         <div class="container">
             <div class="section-title">
                 <h2>Liên Hệ Với Chúng Tôi</h2>
-                <p>Nếu bạn có bất kỳ câu hỏi nào, đừng ngần ngại liên hệ với chúng tôi</p>
+                <p>Hãy để lại thông tin để chúng tôi có thể tư vấn và hỗ trợ bạn tốt nhất</p>
             </div>
             <div class="contact-form">
                 <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Họ và Tên</label>
-                        <input type="text" id="name" name="name" required>
+                    <div class="form-row">
+                        <div class="form-group with-icon">
+                            <label for="name">Họ và Tên</label>
+                            <input type="text" id="name" name="name" required placeholder="Nhập họ tên của bạn">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="form-group with-icon">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="example@email.com">
+                            <i class="fas fa-envelope"></i>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Số Điện Thoại</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="course">Khóa học quan tâm</label>
-                        <select id="course" name="course">
-                            <option value="">-- Chọn khóa học --</option>
-                            <option value="kids">Khóa học thiếu nhi</option>
-                            <option value="adults">Khóa học người lớn</option>
-                            <option value="ielts">Luyện thi IELTS</option>
-                            <option value="toeic">Luyện thi TOEIC</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="form-group with-icon">
+                            <label for="phone">Số Điện Thoại</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="0901 234 567">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="form-group with-icon">
+                            <label for="course">Khóa học quan tâm</label>
+                            <select id="course" name="course" required>
+                                <option value="">-- Chọn khóa học --</option>
+                                <option value="kids">Khóa học thiếu nhi (6-12 tuổi)</option>
+                                <option value="teen">Khóa học thiếu niên (13-17 tuổi)</option>
+                                <option value="adults">Khóa học người lớn (18+ tuổi)</option>
+                                <option value="ielts">Luyện thi IELTS</option>
+                                <option value="toeic">Luyện thi TOEIC</option>
+                                <option value="business">Tiếng Anh doanh nghiệp</option>
+                            </select>
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="message">Lời nhắn</label>
-                        <textarea id="message" name="message"></textarea>
+                        <textarea id="message" name="message" placeholder="Chia sẻ mong muốn của bạn về khóa học, thời gian học, hoặc bất kỳ câu hỏi nào..."></textarea>
                     </div>
-                    <button type="submit" class="btn-submit">Gửi Thông Tin</button>
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Gửi Thông Tin Tư Vấn
+                    </button>
                 </form>
             </div>
         </div>
@@ -814,22 +1886,110 @@
     </footer>
 
     <script>
-        // Form validation
+        // Form validation and submission
         document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const course = document.getElementById('course').value;
+            const message = document.getElementById('message').value.trim();
 
-            if (name && email && phone) {
-                // In a real website, you would send this data to a server
-                alert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ sớm phản hồi.');
-                this.reset();
-            } else {
-                alert('Vui lòng điền đầy đủ thông tin bắt buộc.');
+            // Simple validation
+            if (!name || !email || !phone || !course) {
+                showAlert('Vui lòng điền đầy đủ thông tin bắt buộc!', 'error');
+                return;
             }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showAlert('Email không hợp lệ!', 'error');
+                return;
+            }
+
+            // Phone validation
+            const phoneRegex = /^[0-9]{10,11}$/;
+            if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+                showAlert('Số điện thoại không hợp lệ!', 'error');
+                return;
+            }
+
+            // Simulate form submission
+            const submitBtn = document.querySelector('.btn-submit');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang gửi...';
+            submitBtn.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+                showAlert('Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi trong vòng 24 giờ.', 'success');
+                this.reset();
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Gửi Thông Tin Tư Vấn';
+                submitBtn.disabled = false;
+            }, 2000);
         });
+
+        // Custom alert function
+        function showAlert(message, type) {
+            // Remove existing alerts
+            const existingAlert = document.querySelector('.custom-alert');
+            if (existingAlert) {
+                existingAlert.remove();
+            }
+
+            const alert = document.createElement('div');
+            alert.className = `custom-alert ${type}`;
+            alert.innerHTML = `
+                <div style="
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 10000;
+                    padding: 15px 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+                    font-weight: 600;
+                    color: white;
+                    background: ${type === 'success' ? 'linear-gradient(135deg, #10b981, #059669)' : 'linear-gradient(135deg, #ef4444, #dc2626)'};
+                    animation: slideIn 0.3s ease;
+                    cursor: pointer;
+                ">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i>
+                    ${message}
+                </div>
+            `;
+
+            document.body.appendChild(alert);
+
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (alert.parentNode) {
+                    alert.remove();
+                }
+            }, 5000);
+
+            // Remove on click
+            alert.addEventListener('click', () => {
+                alert.remove();
+            });
+        }
+
+        // Add CSS animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -854,6 +2014,56 @@
             } else {
                 header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
             }
+        });
+
+        // Accordion functionality
+        document.querySelectorAll('.accordion-title').forEach(title => {
+            title.addEventListener('click', function () {
+                const item = this.parentElement;
+                const content = this.nextElementSibling;
+
+                // Toggle active class
+                item.classList.toggle('active');
+
+                // Slide toggle content
+                if (item.classList.contains('active')) {
+                    content.style.display = 'block';
+                    setTimeout(() => {
+                        content.classList.add('active');
+                    }, 10);
+                } else {
+                    content.classList.remove('active');
+                    setTimeout(() => {
+                        content.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+
+        // Toggle Accordion function for new courses section
+        function toggleAccordion(element) {
+            const parent = element.parentElement;
+            const content = parent.querySelector('.accordion-content');
+            const isActive = element.classList.contains('active');
+            // Close all
+            document.querySelectorAll('.accordion-title').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('active'));
+            // Open if not already
+            if (!isActive) {
+                element.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+
+        // Form field animations
+        document.querySelectorAll('input, textarea, select').forEach(field => {
+            field.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+            
+            field.addEventListener('blur', function() {
+                this.parentElement.classList.remove('focused');
+            });
         });
     </script>
 </body>
