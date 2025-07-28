@@ -49,9 +49,17 @@
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .header-top {
@@ -64,7 +72,8 @@
             gap: 0;
             width: 100%;
             box-sizing: border-box;
-            position: relative; /* Ensure proper positioning */
+            position: relative;
+            /* Ensure proper positioning */
         }
 
         .header-top::before {
@@ -74,20 +83,21 @@
             left: 0;
             width: 100%;
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
         }
 
         .logo {
             display: flex;
             align-items: center;
             margin-right: auto;
-            flex-shrink: 0; /* Prevent shrinking */
-            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.9) 100%);
+            flex-shrink: 0;
+            /* Prevent shrinking */
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
             padding: 8px 18px;
             border-radius: 25px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             position: relative;
         }
 
@@ -112,7 +122,7 @@
             font-size: 24px;
             font-weight: 700;
             margin: 0;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -154,7 +164,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.6s ease;
         }
 
@@ -175,7 +185,7 @@
         }
 
         .nav-menu a:hover {
-            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
             transform: translateY(-3px);
             color: #fbbf24;
             text-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
@@ -200,7 +210,7 @@
             letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
-            border: 2px solid rgba(255,255,255,0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .cta-button::before {
@@ -210,7 +220,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
             transition: left 0.5s ease;
         }
 
@@ -536,8 +546,13 @@
         }
 
         @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .contact .container {
@@ -571,8 +586,13 @@
         }
 
         @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
         }
 
         .form-row {
@@ -622,9 +642,9 @@
             background: rgba(255, 255, 255, 0.95);
         }
 
-        .form-group input:focus + label,
-        .form-group textarea:focus + label,
-        .form-group select:focus + label {
+        .form-group input:focus+label,
+        .form-group textarea:focus+label,
+        .form-group select:focus+label {
             color: #3b82f6;
             transform: translateY(-2px);
         }
@@ -711,8 +731,8 @@
             padding-left: 50px;
         }
 
-        .form-group.with-icon input:focus ~ i,
-        .form-group.with-icon select:focus ~ i {
+        .form-group.with-icon input:focus~i,
+        .form-group.with-icon select:focus~i {
             color: #3b82f6;
         }
 
@@ -762,6 +782,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
@@ -772,9 +793,11 @@
             0% {
                 box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
             }
+
             50% {
                 box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
             }
+
             100% {
                 box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
             }
@@ -784,9 +807,11 @@
             0% {
                 box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
             }
+
             50% {
                 box-shadow: 0 4px 20px rgba(30, 58, 138, 0.5);
             }
+
             100% {
                 box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
             }
@@ -819,7 +844,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.6s ease;
         }
 
@@ -917,12 +942,12 @@
                 padding: 6px;
                 gap: 3px;
             }
-            
+
             .nav-menu a {
                 padding: 8px 14px;
                 font-size: 13px;
             }
-            
+
             .cta-button {
                 padding: 10px 18px !important;
                 font-size: 12px !important;
@@ -1002,12 +1027,14 @@
         .accordion-courses {
             margin-top: 40px;
         }
+
         .accordion-item {
             border-radius: 20px;
             margin-bottom: 24px;
             overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
         }
+
         .accordion-title {
             display: flex;
             align-items: center;
@@ -1020,17 +1047,33 @@
             transition: background 0.3s;
             user-select: none;
         }
-        .accordion-title.starter { background: #e9a6c7; }
-        .accordion-title.kids { background: #2877be; }
-        .accordion-title.teen { background: #ea4957; }
-        .accordion-title.ielts { background: #fcdc68; color: #fff; }
+
+        .accordion-title.starter {
+            background: #e9a6c7;
+        }
+
+        .accordion-title.kids {
+            background: #2877be;
+        }
+
+        .accordion-title.teen {
+            background: #ea4957;
+        }
+
+        .accordion-title.ielts {
+            background: #fcdc68;
+            color: #fff;
+        }
+
         .accordion-title .icon {
             font-size: 2rem;
             transition: transform 0.3s;
         }
+
         .accordion-title.active .icon {
             transform: rotate(180deg);
         }
+
         .accordion-content {
             background: #fff;
             color: #333;
@@ -1038,13 +1081,22 @@
             display: none;
             font-size: 1.1rem;
         }
+
         .accordion-content.active {
             display: block;
             animation: fadeIn 0.4s;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Board Members Section */
@@ -1063,7 +1115,7 @@
             right: 0;
             bottom: 0;
             background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 70% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -1217,7 +1269,7 @@
             right: 0;
             bottom: 0;
             background: radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+                radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
             pointer-events: none;
         }
 
@@ -1420,7 +1472,7 @@
         <div class="container">
             <div class="header-top">
                 <div class="logo">
-                    <img src="/logo/z6786694010551_803de0912934c79f0887bce437306be3.jpg" alt="ILISA Logo">
+                    <img src="/logo/ilisa.jpg" alt="ILISA Logo">
                     <h1>ILISA</h1>
                 </div>
                 <nav>
@@ -1535,7 +1587,8 @@
                     </div>
                     <div class="accordion-content">
                         <ul>
-                            <li>Chương trình dành cho trẻ nhỏ, giúp làm quen với tiếng Anh qua trò chơi, bài hát, hoạt động sáng tạo.</li>
+                            <li>Chương trình dành cho trẻ nhỏ, giúp làm quen với tiếng Anh qua trò chơi, bài hát, hoạt
+                                động sáng tạo.</li>
                             <li>Phát triển kỹ năng nghe, nói, nhận biết từ vựng cơ bản.</li>
                         </ul>
                     </div>
@@ -1590,7 +1643,8 @@
             <div class="teachers-grid">
                 <div class="teacher-card">
                     <div class="teacher-avatar">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Pavel Kukikov">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                            alt="Pavel Kukikov">
                     </div>
                     <div class="teacher-info">
                         <h3>Pavel Kukikov</h3>
@@ -1603,7 +1657,8 @@
                 </div>
                 <div class="teacher-card">
                     <div class="teacher-avatar">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Jonathan Bourdon">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                            alt="Jonathan Bourdon">
                     </div>
                     <div class="teacher-info">
                         <h3>Jonathan Bourdon</h3>
@@ -1616,7 +1671,8 @@
                 </div>
                 <div class="teacher-card">
                     <div class="teacher-avatar">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616c5e03129?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Linzi Mary Dickson">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616c5e03129?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                            alt="Linzi Mary Dickson">
                     </div>
                     <div class="teacher-info">
                         <h3>Linzi Mary Dickson</h3>
@@ -1629,7 +1685,8 @@
                 </div>
                 <div class="teacher-card">
                     <div class="teacher-avatar">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1288&q=80" alt="Teacher 4">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1288&q=80"
+                            alt="Teacher 4">
                     </div>
                     <div class="teacher-info">
                         <h3>Sarah Johnson</h3>
@@ -1642,7 +1699,8 @@
                 </div>
                 <div class="teacher-card">
                     <div class="teacher-avatar">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Teacher 5">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                            alt="Teacher 5">
                     </div>
                     <div class="teacher-info">
                         <h3>Michael Brown</h3>
@@ -1655,7 +1713,8 @@
                 </div>
                 <div class="teacher-card">
                     <div class="teacher-avatar">
-                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Teacher 6">
+                        <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                            alt="Teacher 6">
                     </div>
                     <div class="teacher-info">
                         <h3>Emma Wilson</h3>
@@ -1681,7 +1740,8 @@
                 <div class="members-grid">
                     <div class="member-card">
                         <div class="member-avatar">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616c5e03129?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Arabella Peters">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616c5e03129?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                                alt="Arabella Peters">
                         </div>
                         <div class="member-info">
                             <h3>Arabella Peters</h3>
@@ -1695,7 +1755,8 @@
                     </div>
                     <div class="member-card">
                         <div class="member-avatar">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dugie Cameron">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                                alt="Dugie Cameron">
                         </div>
                         <div class="member-info">
                             <h3>Dugie Cameron</h3>
@@ -1709,7 +1770,8 @@
                     </div>
                     <div class="member-card">
                         <div class="member-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt="Richard Eu">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80"
+                                alt="Richard Eu">
                         </div>
                         <div class="member-info">
                             <h3>Richard Eu</h3>
@@ -1820,7 +1882,8 @@
                     </div>
                     <div class="form-group">
                         <label for="message">Lời nhắn</label>
-                        <textarea id="message" name="message" placeholder="Chia sẻ mong muốn của bạn về khóa học, thời gian học, hoặc bất kỳ câu hỏi nào..."></textarea>
+                        <textarea id="message" name="message"
+                            placeholder="Chia sẻ mong muốn của bạn về khóa học, thời gian học, hoặc bất kỳ câu hỏi nào..."></textarea>
                     </div>
                     <button type="submit" class="btn-submit">
                         <i class="fas fa-paper-plane"></i>
@@ -2057,11 +2120,11 @@
 
         // Form field animations
         document.querySelectorAll('input, textarea, select').forEach(field => {
-            field.addEventListener('focus', function() {
+            field.addEventListener('focus', function () {
                 this.parentElement.classList.add('focused');
             });
-            
-            field.addEventListener('blur', function() {
+
+            field.addEventListener('blur', function () {
                 this.parentElement.classList.remove('focused');
             });
         });
